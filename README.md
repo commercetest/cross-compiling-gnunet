@@ -12,6 +12,7 @@ A work-in-progress repository of the scripts, discoveries, tips and traps we're 
 | zlib| Text     | Text     | Text     | Text     |
 
 (The table is reproduced from https://hedgedoc.c3d2.de/4_Gov7XPT9yE3JHfiTH8nQ?view)
-# Related Works
+# Related Work
 
+- Environment variables are set using the examples in the Autoconf section of https://developer.android.com/ndk/guides/other_build_systems
 - https://github.com/commercetest/libgpg-error-with-android/tree/updates-to-build-for-android documents specific steps for building on/for Android devices
