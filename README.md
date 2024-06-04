@@ -7,7 +7,7 @@ A work-in-progress repository of the scripts, discoveries, tips and traps we're 
 | liblibsodium| Text     | Text     | Text     | Text     |
 | libgcrypt| Text     | Text     | Text     | Text     |
 | lltdl| Text     | Text     | Text     | Text     |
-| unistring| Text     | Text     | Text     | Text     |
+| unistring| https://github.com/gnosis/libunistring     | HEAD     | Text     | ~/x-compile-gnunet-sandbox/libunistring-for-android     |
 | gmp| Text     | Text     | Text     | Text     |
 | zlib| Text     | Text     | Text     | Text     |
 
