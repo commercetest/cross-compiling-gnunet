@@ -1,6 +1,0 @@
-hg outgoing
-./.bootstrap
-./configure --host=$TARGET --enable-maintainer-mode
-make
-cp gmp.h ~/AndroidStudioProjects/GNUnet/distribution/gmp/lib/include/
-cp ./.libs/libgmp.so ~/AndroidStudioProjects/GNUnet/distribution/gmp/

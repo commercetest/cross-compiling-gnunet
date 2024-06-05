@@ -1,7 +1,0 @@
-#!/bin/bash
-
-git clean -f
-./autogen.sh
-
-./configure --host=$TARGET
-make
