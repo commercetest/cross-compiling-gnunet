@@ -41,6 +41,12 @@ make
 file ./lib/.libs/libunistring.so
 file libltdl/ltdl.h
 ```
+## software packages needed to build the dependencies
+YMMV depending on what your development environment and OS release already provide. To help improve reproducibility here are packages that needed installing to make these dependencies.
+
+- `hg` (mercurial) and `yacc` needed to make gmp. In Ubuntu 22.04 LTS these were provided using `sudo apt install mercurial bison`.
+- `gperf` installed using `sudo apt install gperf`
+- `help2man` installed using `sudo apt install help2man`
 
 # Related Work
 
