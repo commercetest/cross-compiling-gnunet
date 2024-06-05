@@ -16,3 +16,6 @@ A work-in-progress repository of the scripts, discoveries, tips and traps we're 
 
 - Environment variables are set using the examples in the Autoconf section of https://developer.android.com/ndk/guides/other_build_systems
 - https://github.com/commercetest/libgpg-error-with-android/tree/updates-to-build-for-android documents specific steps for building on/for Android devices
+
+# Licenses for this work
+The code is currently available under the [MIT license](https://github.com/commercetest/cross-compiling-gnunet?tab=MIT-1-ov-file#readme) and text available under the [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) license. For the avoidance of doubt any portion of this material may be incorporated into projects licensed with an approved GNU GPL license (see https://www.gnu.org/licenses/gpl-howto.html).
