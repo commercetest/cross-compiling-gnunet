@@ -23,6 +23,8 @@ git clone ...
 ./autogen.sh 
 ./configure --host=$TARGET
 make
+
+file ./lib/.libs/libunistring.so
 ```
 
 # Related Work
