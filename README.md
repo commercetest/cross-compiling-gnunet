@@ -17,16 +17,18 @@ This repo contains a set of scripts in https://github.com/commercetest/cross-com
 
 The evidence column provides a summary of how to check whether the results are OK. Generally the output of the file command will include the intended architecture of the library|libraries that were generated.
 
-## lltdl
+## gmp
 ```
-git clone https://git.savannah.gnu.org/git/libtool.git libtool-for-android
-cd libtool-for-android/
-./bootstrap
-./configure --host=$TARGET
-make
+hg outgoing # check for any uncommitted changes to the cloned repo
 
-file libltdl/.libs/libltdl.so
-file 
+./.bootstrap
+./configure --host=$TARGET --enable-maintainer-mode
+
+file gmp.h| grep 'C source'
+echo $?  # should be 0
+
+file ./.libs/libgmp.so  | grep 'ARM aarch64'
+echo $?  # should be 0
 ```
 
 ## libunistring
@@ -38,9 +40,28 @@ git clone ...
 ./configure --host=$TARGET
 make
 
-file ./lib/.libs/libunistring.so
-file libltdl/ltdl.h
+file ./lib/.libs/libunistring.so | grep 'ARM aarch64'
+echo $?  # should be 0
+
+file libltdl/ltdl.h | grep 'C source'
+echo $?  # should be 0
 ```
+
+## lltdl
+```
+git clone https://git.savannah.gnu.org/git/libtool.git libtool-for-android
+cd libtool-for-android/
+./bootstrap
+./configure --host=$TARGET
+make
+
+file libltdl/.libs/libltdl.so | grep 'ARM aarch64'
+echo $?  # should be 0
+
+file libltdl/ltdl.h | grep 'C source'
+echo $?  # should be 0
+```
+
 ## software packages needed to build the dependencies
 YMMV depending on what your development environment and OS release already provide. To help improve reproducibility here are packages that needed installing to make these dependencies.
 
