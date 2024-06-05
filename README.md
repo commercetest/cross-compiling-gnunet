@@ -6,7 +6,7 @@ A work-in-progress repository of the scripts, discoveries, tips and traps we're 
 | -------- | -------- | -------- |  -------- | -------- | -------- |
 | liblibsodium| Text     | Text     | Text     | Text     | Text     |
 | libgcrypt| Text     | Text     | Text     | Text     | Text     |
-| lltdl| Text     | Text     | Text     | Text     | Text     |
+| lltdl| [Text](https://git.savannah.gnu.org/git/libtool.git)     | HEAD     | Text     | Text     | file libltdl/.libs/libltdl.so   |
 | unistring| https://github.com/gnosis/libunistring     | HEAD     | Text     | ~/x-compile-gnunet-sandbox/libunistring-for-android     | `file ./lib/.libs/libunistring.so` |
 | gmp| Text     | Text     | Text     | Text     | Text     |
 | zlib| Text     | Text     | Text     | Text     | Text     |
@@ -14,6 +14,18 @@ A work-in-progress repository of the scripts, discoveries, tips and traps we're 
 (The table is an extended edition of https://hedgedoc.c3d2.de/4_Gov7XPT9yE3JHfiTH8nQ?view)
 
 The evidence column provides a summary of how to check whether the results are OK. Generally the output of the file command will include the intended architecture of the library|libraries that were generated.
+
+## lltdl
+```
+git clone https://git.savannah.gnu.org/git/libtool.git libtool-for-android
+cd libtool-for-android/
+./bootstrap
+./configure --host=$TARGET
+make
+
+file libltdl/.libs/libltdl.so
+file 
+```
 
 ## libunistring
 ```
@@ -25,6 +37,7 @@ git clone ...
 make
 
 file ./lib/.libs/libunistring.so
+file libltdl/ltdl.h
 ```
 
 # Related Work
