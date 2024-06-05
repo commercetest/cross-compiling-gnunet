@@ -1,14 +1,16 @@
 # cross-compiling-gnunet
 A work-in-progress repository of the scripts, discoveries, tips and traps we're discovering during the process of cross-compiling GNUnet for Android.
 
+This repo contains a set of scripts in https://github.com/commercetest/cross-compiling-gnunet/tree/main/scripts which we are iteratively refining.
+
 # Dependencies for GNUnet Utils
 | Libraries | Source of Library | Version | How built | Local location on build machine | Evidence |
 | -------- | -------- | -------- |  -------- | -------- | -------- |
 | liblibsodium| Text     | Text     | Text     | Text     | Text     |
 | libgcrypt| Text     | Text     | Text     | Text     | Text     |
-| lltdl| [Text](https://git.savannah.gnu.org/git/libtool.git)     | HEAD     | Text     | Text     | file libltdl/.libs/libltdl.so   |
+| lltdl| [Text](https://git.savannah.gnu.org/git/libtool.git)     | HEAD     | Text     | ~/x-compile-gnunet-sandbox/libtool-for-android     | file libltdl/.libs/libltdl.so   |
 | unistring| https://github.com/gnosis/libunistring     | HEAD     | Text     | ~/x-compile-gnunet-sandbox/libunistring-for-android     | `file ./lib/.libs/libunistring.so` |
-| gmp| Text     | Text     | Text     | Text     | Text     |
+| gmp| [Text](https://gmplib.org/devel/repo-usage)     | 6.2     | Text     | ~/x-compile-gnunet-sandbox/gmp-6_2_for_android     | Text     |
 | zlib| Text     | Text     | Text     | Text     | Text     |
 
 (The table is an extended edition of https://hedgedoc.c3d2.de/4_Gov7XPT9yE3JHfiTH8nQ?view)
