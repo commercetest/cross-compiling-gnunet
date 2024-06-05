@@ -1,0 +1,7 @@
+git clean -f
+./bootstrap
+. ../gnunet_stuff/cross_compile_config.sh $1 $2
+./configure --host=$TARGET
+make
+cp ./libltdl/.libs/libltdl.so ~/AndroidStudioProjects/GNUnet/distribution/libtool/lib/arm64-v8a/
+cp libltdl/ltdl.h ~/AndroidStudioProjects/GNUnet/distribution/libtool/lib/arm64-v8a/include/
