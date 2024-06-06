@@ -1,5 +1,11 @@
 #!/bin/bash
 
+# create a folder/directory to use as the TARGETDIR
+mkdir targetdir
+export TARGETDIR=`pwd`/targetdir
+echo $TARGETDIR  # to check the value, it should be a full valid path to the newly created dir.
+# Note: although make requires the targetdir it doesn't appear to write anything persistent there.
+
 git clean -f
 ./autogen.sh
 build="$(build-aux/config.guess)"
