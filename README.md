@@ -35,9 +35,8 @@ mkdir ~/x-compile-gnunet-sandbox/cross-build/lib
 
 ## libgpg-error (used by libgcrypt, so build first)
 ```
-# For whatever reason this folder needs to exist for make to complete the build
-mkdir targetdir
-export TARGETDIR=`pwd`/targetdir
+# TARGETDIR is set here and incorporated into the build outputs (particularly src/gpg-error-config)
+export TARGETDIR=~/x-compile-gnunet-sandbox/cross-build/
 echo $TARGETDIR
 
 # standard build steps
@@ -89,6 +88,13 @@ make
 # Check the generated shared library is for the expected Android architecture
 file ./src/.libs/libgpg-error.so
 ```
+Copy various build outputs to the cross-build folders:
+```
+cp src/gpg-error-config ~/x-compile-gnunet-sandbox/cross-build/bin/
+cp src/gpgrt-config ~/x-compile-gnunet-sandbox/cross-build/bin/
+cp src/.libs/libgpg-error.so ~/x-compile-gnunet-sandbox/cross-build/lib/
+cp src/gpg-error.h ~/x-compile-gnunet-sandbox/cross-build/include/
+```
 
 ## gmp
 ```
@@ -108,6 +114,14 @@ echo $?  # should be 0
 We're currently building release 1.10.3 and make some changes to the configuration; TBD how long-lived these will be.
 ```
 git checkout libgcrypt-1.10.3
+```
+The following are subject to change as I learn and understand more about `autogen.sh` and `configure`. They work on my machine for one Android build target so far...
+```
+/autogen.sh
+./configure --host=$TARGET --with-libgpg-error-prefix=/home/julian/x-compile-gnunet-sandbox/cross-build/ --prefix=/home/julian/x-compile-gnunet-sandbox/cross-build/ --exec-prefix=/home/julian/x-compile-gnunet-sandbox/cross-build/ --disable-doc
+make
+echo $?  # the return value should be 0
+file src/.libs/libgcrypt.so
 ```
 
 ## libunistring
@@ -147,6 +161,7 @@ YMMV depending on what your development environment and OS release already provi
 - `hg` (mercurial) and `yacc` needed to make gmp. In Ubuntu 22.04 LTS these were provided using `sudo apt install mercurial bison`.
 - `gperf` installed using `sudo apt install gperf`
 - `help2man` installed using `sudo apt install help2man`
+- `fig2dev` for libcrypt  using `sudo apt install fig2dev`
 
 # Related Work
 
