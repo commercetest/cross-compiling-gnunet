@@ -63,7 +63,10 @@ ls -lart  # check the most recent file is the renamed tmp.h
 
 # Remove the architecture-specific element from the name of the header file
 cp lock-obj-pub.armv7a-unknown-linux-androideabi.h lock-obj-pub.linux-android.h
-
+```
+Each make continues from here (the Android stuff only needs doing once per Android architecture).
+Beware of accidentially using the wrong architecture specific header file (generated in the previous steps).
+```
 # Continue the standard make process
 cd ../..
 make
