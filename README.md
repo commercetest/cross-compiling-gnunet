@@ -3,12 +3,18 @@ A work-in-progress repository of the scripts, discoveries, tips and traps we're 
 
 This repo contains a set of scripts in https://github.com/commercetest/cross-compiling-gnunet/tree/main/scripts which we are iteratively refining.
 
+Key elements:
+
+- root folder for the cross-compilation; set to `~/x-compile-gnunet-sandbox` for now
+- root folder for the target architecture's binaries that Android's build system uses that is mapped using `CMakeLists.txt`
+- inter-dependencies folder, which contains various folders for intermediate build outputs used by other dependencies.
+
 # Dependencies for GNUnet Utils
 | Libraries | Source of Library | Version | How built | Local location on build machine | Evidence |
 | -------- | -------- | -------- |  -------- | -------- | -------- |
 | liblibsodium| Text     | Text     | Text     | Text     | Text     |
 | libgpg-error | [fork of github-mirror](https://github.com/commercetest/libgpg-error-with-android.git ) | 1.49 | Text | ~/x-compile-gnunet-sandbox/libgpg-error-with-android | file ./src/.libs/libgpg-error.so |
-| libgcrypt| https://github.com/gpg/libgcrypt.git     | HEAD     | Text     | Text     | Text     |
+| libgcrypt| https://github.com/gpg/libgcrypt.git     | 1.10.3     | Text     | Text     | Text     |
 | lltdl| https://git.savannah.gnu.org/git/libtool.git    | HEAD     | Text     | ~/x-compile-gnunet-sandbox/libtool-for-android     | `file libltdl/.libs/libltdl.so`   |
 | unistring| https://github.com/gnosis/libunistring     | HEAD     | Text     | ~/x-compile-gnunet-sandbox/libunistring-for-android     | `file ./lib/.libs/libunistring.so` |
 | gmp| https://gmplib.org/devel/repo-usage   | 6.2     | Text     | ~/x-compile-gnunet-sandbox/gmp-6_2_for_android     | `file ./.libs/libgmp.so`     |
@@ -17,6 +23,15 @@ This repo contains a set of scripts in https://github.com/commercetest/cross-com
 (The table is an extended edition of https://hedgedoc.c3d2.de/4_Gov7XPT9yE3JHfiTH8nQ?view)
 
 The evidence column provides a summary of how to check whether the results are OK. Generally the output of the file command will include the intended architecture of the library|libraries that were generated.
+
+## Shared folders for inter-dependencies
+`libgpg-error` generates various files used by `libgcrypt`. A set of shared folders are created in the root of the cross-compilation root `~/x-compile-gnunet-sandbox/`
+```
+mkdir ~/x-compile-gnunet-sandbox/cross-build/
+mkdir ~/x-compile-gnunet-sandbox/cross-build/bin
+mkdir ~/x-compile-gnunet-sandbox/cross-build/include
+mkdir ~/x-compile-gnunet-sandbox/cross-build/lib
+```
 
 ## libgpg-error (used by libgcrypt, so build first)
 ```
@@ -87,6 +102,12 @@ echo $?  # should be 0
 
 file ./.libs/libgmp.so  | grep 'ARM aarch64'
 echo $?  # should be 0
+```
+
+## libgcrypt
+We're currently building release 1.10.3 and make some changes to the configuration; TBD how long-lived these will be.
+```
+git checkout libgcrypt-1.10.3
 ```
 
 ## libunistring
