@@ -16,7 +16,7 @@ Key elements:
 | libgpg-error | [fork of github-mirror](https://github.com/commercetest/libgpg-error-with-android.git ) | 1.49 | Text | ~/x-compile-gnunet-sandbox/libgpg-error-with-android | file ./src/.libs/libgpg-error.so |
 | libgcrypt| https://github.com/gpg/libgcrypt.git     | 1.10.3     | Text     | Text     | Text     |
 | ltdl| https://git.savannah.gnu.org/git/libtool.git    | HEAD (v2.5.0)  | Text     | ~/x-compile-gnunet-sandbox/libtool-for-android     | `file libltdl/.libs/libltdl.so`   |
-| unistring| https://github.com/gnosis/libunistring     | HEAD     | Text     | ~/x-compile-gnunet-sandbox/github-libunistring-for-android     | `file ./lib/.libs/libunistring.so` |
+| unistring| https://git.savannah.gnu.org/git/libunistring.git   | HEAD (v1.2)   | Text     | ~/x-compile-gnunet-sandbox/libunistring-for-android     | `file ./lib/.libs/libunistring.so` |
 | gmp| https://gmplib.org/devel/repo-usage   | 6.2     | Text     | ~/x-compile-gnunet-sandbox/gmp-6_2_for_android     | `file ./.libs/libgmp.so`     |
 | zlib| Text     | Text     | Text     | Text     | Text     |
 
