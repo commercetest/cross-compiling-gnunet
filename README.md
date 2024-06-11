@@ -16,7 +16,7 @@ Key elements:
 | libgpg-error | [fork of github-mirror](https://github.com/commercetest/libgpg-error-with-android.git ) | 1.49 | Text | ~/x-compile-gnunet-sandbox/libgpg-error-with-android | file ./src/.libs/libgpg-error.so |
 | libgcrypt| https://github.com/gpg/libgcrypt.git     | 1.10.3     | Text     | Text     | Text     |
 | ltdl| https://git.savannah.gnu.org/git/libtool.git    | HEAD (v2.5.0)  | Text     | ~/x-compile-gnunet-sandbox/libtool-for-android     | `file libltdl/.libs/libltdl.so`   |
-| unistring| https://github.com/gnosis/libunistring     | HEAD     | Text     | ~/x-compile-gnunet-sandbox/libunistring-for-android     | `file ./lib/.libs/libunistring.so` |
+| unistring| https://github.com/gnosis/libunistring     | HEAD     | Text     | ~/x-compile-gnunet-sandbox/github-libunistring-for-android     | `file ./lib/.libs/libunistring.so` |
 | gmp| https://gmplib.org/devel/repo-usage   | 6.2     | Text     | ~/x-compile-gnunet-sandbox/gmp-6_2_for_android     | `file ./.libs/libgmp.so`     |
 | zlib| Text     | Text     | Text     | Text     | Text     |
 
@@ -126,11 +126,21 @@ file src/.libs/libgcrypt.so
 ## libtool (ltdl)
 Compiled from `HEAD` in the `master` branch, last tagged as v2.5.0
 ```
+git clone https://git.savannah.gnu.org/git/libtool.git libtool-for-android
+cd libtool-for-android/
+```
+Build steps
+```
 ./bootstrap
 ./configure --host=$TARGET
 make
 echo $?  # the return value should be 0
-file ./libltdl/.libs/libltdl.so
+
+file libltdl/.libs/libltdl.so | grep 'ARM aarch64'
+echo $?  # should be 0
+
+file libltdl/ltdl.h | grep 'C source'
+echo $?  # should be 0
 ```
 The library information should reflect the target architecture (ARM or x86, 32-bit or 64-bit).
 
@@ -140,10 +150,15 @@ cp ./libltdl/.libs/libltdl.so ~/AndroidStudioProjects/GNUnet/distribution/libtoo
 cp libltdl/ltdl.h ~/AndroidStudioProjects/GNUnet/distribution/libtool/lib/arm64-v8a/include/
 ```
 ## libunistring
+Note: the mirror on github.com was last updated in 2021. 
+GNU hosts the current repo https://git.savannah.gnu.org/git/libunistring.git
 ```
 git clone ...
 # Configure environment variables
 ./gitsub.sh pull
+```
+Build steps
+```
 ./autogen.sh 
 ./configure --host=$TARGET
 make
@@ -155,20 +170,6 @@ file libltdl/ltdl.h | grep 'C source'
 echo $?  # should be 0
 ```
 
-## lltdl
-```
-git clone https://git.savannah.gnu.org/git/libtool.git libtool-for-android
-cd libtool-for-android/
-./bootstrap
-./configure --host=$TARGET
-make
-
-file libltdl/.libs/libltdl.so | grep 'ARM aarch64'
-echo $?  # should be 0
-
-file libltdl/ltdl.h | grep 'C source'
-echo $?  # should be 0
-```
 
 ## software packages needed to build the dependencies
 YMMV depending on what your development environment and OS release already provide. To help improve reproducibility here are packages that needed installing to make these dependencies.
